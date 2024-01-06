@@ -5,10 +5,10 @@ const { getAllUsers } = require('../services/database/queries/userQueries');
 router.get('/', async (req, res) => {
   try {
     const allUsers = await getAllUsers();
-    const result = res.send(allUsers);
-    return result;
+    const response = res.json(allUsers);
+    return response;
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 });
 
