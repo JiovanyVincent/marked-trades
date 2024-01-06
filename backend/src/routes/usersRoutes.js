@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { getAllUsers } = require('../services/database/queries/userQueries');
+const User = require('../models/userModel');
 
 router.get('/', async (req, res) => {
   try {
-    const allUsers = await getAllUsers();
-    const response = res.json(allUsers);
+    const users = await User.find();
+    console.log(users);
+    const response = res.json(users);
     return response;
   } catch (error) {
     return res.status(500).json({ error: error.message });
