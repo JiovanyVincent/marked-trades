@@ -5,7 +5,6 @@ const getAllUsers = async () => {
   try {
     const users = client.db(database).collection('users');
     const result = await users.findOne();
-    console.log(result);
     return result;
   } catch (error) {
     throw new Error("Erreur lors de la récupération de l'utilisateur:", error);
